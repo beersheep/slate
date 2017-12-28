@@ -165,137 +165,107 @@ favorite_stocks | true | array | parameter keys
 id | true | integer | お気に入り銘柄 ID 
 order | true | integer | お気に入り銘柄順番 
 
-# Authentication
+# StockGroup
 
-> To authorize, use this code:
+## Add FavoriteStock Group
 
-```ruby
-require 'kittn'
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-> The above command returns JSON structured like this:
+> Return value
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+  { 
+    "stock_group_id": 1001
   }
-]
 ```
 
-This endpoint retrieves all kittens.
+Add stock group.
+<aside class="notice">Require user login.</aside>
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`POST api/v1/stock_group/create`
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Parameter | Reqiured | Datatype | Description
+--------- | -------- | -------- | -----------
+favorite_stock_id | true | integer | お気に入り銘柄 ID 
+name | true | string | グループ名前
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+## Ungroup StockGroup
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-> The above command returns JSON structured like this:
+> Return value:
 
 ```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+  {
+    "stock_groups": [
+      { "id": 1, "name": "left_group_1" },
+      { "id": 2, "name": "left_group_2" }
+    ]
+  }
 ```
 
-This endpoint retrieves a specific kitten.
+Remove a group from one of the favorite_stock belongs to current user.
+Return value indicates the group remain with the favorite_stock.
+<aside class="notice">Require user login.</aside>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+### HTTP Requst
+
+`DELETE api/v1/stock_group/:group_id/ungroup`
+
+### Query Parameters
+
+Parameter | Reqiured | Datatype | Description
+--------- | -------- | -------- | -----------
+favorite_stock_id | true | integer | お気に入り銘柄 ID 
+stock_group_id | true | integer | グループ ID
+
+## Search StockGroup
+
+> Return value:
+
+```json
+  {
+    "results": [
+      { "name": "match_group1", "id": 1 },
+      { "name": "match_group2", "id": 2 }
+    ]
+  }
+```
+
+Search StockGroups that have been created by current user.
+<aside class="notice">Require user login.</aside>
+
+### HTTP Requst
+
+`GET api/v1/stock_group/search`
+
+### Query Parameters
+
+Parameter | Reqiured | Datatype | Description
+--------- | -------- | -------- | -----------
+term | true | string | 検索キーワード
+
+## Delete StockGroup
+
+Delete a StockGroup that belongs to current user.
+<aside class="notice">Require user login.</aside>
+
+> Return value:
+
+```json
+  "stock_groups": [
+    { "id": 1, "name": "left_group_1" }, 
+    { "id": 2, "name": "left_group_2" }
+  ]
+```
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`DELETE api/v1/stock_groups/:id`
 
-### URL Parameters
+### Query Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+Parameter | Reqiured | Datatype | Description
+--------- | -------- | -------- | -----------
+id | true | integer | 銘柄グループ ID
 
