@@ -1,15 +1,5 @@
 ---
-title: API Reference
-
-language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+title: Kabutan API Reference
 
 includes:
   - errors
@@ -19,11 +9,161 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+The API Document for Kabutan OBOE
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# FavoriteStocks
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+## Get FavoriteStocks
+
+> Return value:
+
+```json
+{ "favorite_stocks": 
+  [ 
+    { 
+      "id": 1,
+      "stock_code": "1301",
+      "registered_on": "2017-12-05",
+      "price_at_registration": 10.0,
+      "name": "Nintendo",
+      "prev_close_price": 20.0,
+      "note": "first stock",
+      "stock_groups": [
+        { "name": "group1",
+          "id":   1001 },
+        { "name": "group2",
+          "id":   1002 }
+      ],
+      "main_order": 1
+    }, 
+
+    {
+      "id": 2
+      "stock_code": "8001",
+      "registered_on": "2017-12-04",
+      "price_at_registration": 10.0,
+      "name": "Shisedo",
+      "prev_close_price": 20.0,
+      "note": "second stock",
+      "stock_groups": [
+        { "name": "group3"
+          "id":   1003 },
+        { "name": "group2",
+          "id":   1002 }
+       ],
+       "main_order": 2
+    }
+  ]   
+}
+```
+
+Return all the favorite_stocks belong to current user.
+<aside class="notice">Require user login.</aside>
+
+### HTTP Request
+
+`GET api/v1/favorite_stocks/all`
+
+### Query Parameters
+
+None
+
+## Edit FavoriteStock
+
+> Return value:
+
+```json
+  {
+    "stock_code": "1301",
+    "name": "Nintendo",
+    "registered_on": "2017-10-10",
+    "price_at_registration": 10.0,
+    "prev_close_price": 20.0,
+    "prev_close_price_updated_on": "2017-12-08",
+    "note": "note",
+    "stock_group": [
+      { "id": 1001, "name": "Gaming" },
+      { "id": 1002, "name": "Manufacturer" }
+    ]
+  }
+```
+
+Edit favorite_stock belongs to current_user.
+<aside class="notice">Require user login.</aside>
+
+### HTTP Request
+
+`PUT api/v1/favorite_stock`
+
+### Query Parameters
+
+Parameter | Reqiured | Datatype | Description
+--------- | -------- | -------- | -----------
+stock_code | true | string | 銘柄コード
+registered_on | true | date | 登録日
+price_at_registration | true | float | 登録時株価
+note | false | string | メモ
+stock_group_ids | false | array_of_integer | 銘柄グループ
+
+## Edit FavoriteStock Order
+
+> Return value:
+
+```json
+{ "favorite_stocks": 
+  [ 
+    { 
+      "id": 1,
+      "stock_code": "1301",
+      "registered_on": "2017-12-05",
+      "price_at_registration": 10.0,
+      "name": "Nintendo",
+      "prev_close_price": 20.0,
+      "note": "first stock",
+      "stock_groups": [
+        { "name": "group1",
+          "id":   1001 },
+        { "name": "group2",
+          "id":   1002 }
+      ],
+      "main_order": 1
+
+    }, 
+
+    {
+      "id": 2
+      "stock_code": "8001",
+      "registered_on": "2017-12-04",
+      "price_at_registration": 10.0,
+      "name": "Shisedo",
+      "prev_close_price": 20.0,
+      "note": "second stock",
+      "stock_groups": [
+        { "name": "group3"
+          "id":   1003 },
+        { "name": "group2",
+          "id":   1002 }
+       ],
+      "main_order": 2
+    }
+  ]   
+}
+```
+
+Reorder all favorite_stocks belong to current_user.
+<aside class="notice">Require user login.</aside>
+
+### HTTP Request
+
+`PATCH api/v1/favorite_stocks/reorder`
+
+### Query Parameters
+
+Parameter | Reqiured | Datatype | Description
+--------- | -------- | -------- | -----------
+favorite_stocks | true | array | parameter keys
+id | true | integer | お気に入り銘柄 ID 
+order | true | integer | お気に入り銘柄順番 
 
 # Authentication
 
@@ -31,26 +171,7 @@ This example API documentation page was created with [Slate](https://github.com/
 
 ```ruby
 require 'kittn'
-
 api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
 ```
 
 > Make sure to replace `meowmeowmeow` with your API key.
@@ -58,7 +179,6 @@ let api = kittn.authorize('meowmeowmeow');
 Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
 
 Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
 `Authorization: meowmeowmeow`
 
 <aside class="notice">
@@ -74,25 +194,6 @@ require 'kittn'
 
 api = Kittn::APIClient.authorize!('meowmeowmeow')
 api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
 ```
 
 > The above command returns JSON structured like this:
@@ -142,25 +243,6 @@ api = Kittn::APIClient.authorize!('meowmeowmeow')
 api.kittens.get(2)
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
 > The above command returns JSON structured like this:
 
 ```json
@@ -194,26 +276,6 @@ require 'kittn'
 
 api = Kittn::APIClient.authorize!('meowmeowmeow')
 api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
 ```
 
 > The above command returns JSON structured like this:
