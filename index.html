@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Kabutan API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -210,12 +210,6 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
-        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -223,6 +217,20 @@
       <div id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#favoritestocks" class="toc-h1 toc-link" data-title="FavoriteStocks">FavoriteStocks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-favoritestocks" class="toc-h2 toc-link" data-title="Get FavoriteStocks">Get FavoriteStocks</a>
+                  </li>
+                  <li>
+                    <a href="#edit-favoritestock" class="toc-h2 toc-link" data-title="Edit FavoriteStock">Edit FavoriteStock</a>
+                  </li>
+                  <li>
+                    <a href="#edit-favoritestock-order" class="toc-h2 toc-link" data-title="Edit FavoriteStock Order">Edit FavoriteStock Order</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
@@ -245,36 +253,203 @@
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </div>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>The API Document for Kabutan OBOE</p>
+<h1 id='favoritestocks'>FavoriteStocks</h1><h2 id='get-favoritestocks'>Get FavoriteStocks</h2>
+<blockquote>
+<p>Return value:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"favorite_stocks"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w"> 
+    </span><span class="p">{</span><span class="w"> 
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stock_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1301"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"registered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-05"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_at_registration"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nintendo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prev_close_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first stock"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stock_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w">   </span><span class="mi">1001</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w">   </span><span class="mi">1002</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"main_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="s2">"stock_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"registered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-04"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_at_registration"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shisedo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prev_close_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"second stock"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stock_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group3"</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w">   </span><span class="mi">1003</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w">   </span><span class="mi">1002</span><span class="w"> </span><span class="p">}</span><span class="w">
+       </span><span class="p">],</span><span class="w">
+       </span><span class="s2">"main_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">   
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Return all the favorite_stocks belong to current user.
+<aside class="notice">Require user login.</aside></p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET api/v1/favorite_stocks/all</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<p>None</p>
+<h2 id='edit-favoritestock'>Edit FavoriteStock</h2>
+<blockquote>
+<p>Return value:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"stock_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1301"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nintendo"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"registered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10-10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price_at_registration"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prev_close_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"prev_close_price_updated_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-08"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"note"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"stock_group"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1001</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gaming"</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1002</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Manufacturer"</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Edit favorite_stock belongs to current_user.
+<aside class="notice">Require user login.</aside></p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>PUT api/v1/favorite_stock</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Reqiured</th>
+<th>Datatype</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>stock_code</td>
+<td>true</td>
+<td>string</td>
+<td>銘柄コード</td>
+</tr>
+<tr>
+<td>registered_on</td>
+<td>true</td>
+<td>date</td>
+<td>登録日</td>
+</tr>
+<tr>
+<td>price_at_registration</td>
+<td>true</td>
+<td>float</td>
+<td>登録時株価</td>
+</tr>
+<tr>
+<td>note</td>
+<td>false</td>
+<td>string</td>
+<td>メモ</td>
+</tr>
+<tr>
+<td>stock_group_ids</td>
+<td>false</td>
+<td>array_of_integer</td>
+<td>銘柄グループ</td>
+</tr>
+</tbody></table>
+<h2 id='edit-favoritestock-order'>Edit FavoriteStock Order</h2>
+<blockquote>
+<p>Return value:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"favorite_stocks"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w"> 
+    </span><span class="p">{</span><span class="w"> 
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stock_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1301"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"registered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-05"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_at_registration"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Nintendo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prev_close_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first stock"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stock_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w">   </span><span class="mi">1001</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w">   </span><span class="mi">1002</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"main_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+    </span><span class="p">},</span><span class="w"> 
+
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="s2">"stock_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8001"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"registered_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-04"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"price_at_registration"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shisedo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prev_close_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"second stock"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"stock_groups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group3"</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w">   </span><span class="mi">1003</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"group2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w">   </span><span class="mi">1002</span><span class="w"> </span><span class="p">}</span><span class="w">
+       </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"main_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">   
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Reorder all favorite_stocks belong to current_user.
+<aside class="notice">Require user login.</aside></p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>PATCH api/v1/favorite_stocks/reorder</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Reqiured</th>
+<th>Datatype</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>favorite_stocks</td>
+<td>true</td>
+<td>array</td>
+<td>parameter keys</td>
+</tr>
+<tr>
+<td>id</td>
+<td>true</td>
+<td>integer</td>
+<td>お気に入り銘柄 ID</td>
+</tr>
+<tr>
+<td>order</td>
+<td>true</td>
+<td>integer</td>
+<td>お気に入り銘柄順番</td>
+</tr>
+</tbody></table>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
 <pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
@@ -282,9 +457,8 @@ curl <span class="s2">"api_endpoint_here"</span>
 
 <p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+<code>Authorization: meowmeowmeow</code></p>
 
 <aside class="notice">
 You must replace <code>meowmeowmeow</code> with your personal API key.
@@ -293,16 +467,6 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
 <span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -325,9 +489,9 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -354,16 +518,6 @@ Remember — a happy kitten is an authenticated kitten!
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
 <span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -379,7 +533,7 @@ Remember — a happy kitten is an authenticated kitten!
 <p>This endpoint retrieves a specific kitten.</p>
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -397,17 +551,6 @@ Remember — a happy kitten is an authenticated kitten!
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
 <span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -418,7 +561,7 @@ Remember — a happy kitten is an authenticated kitten!
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -491,12 +634,6 @@ Remember — a happy kitten is an authenticated kitten!
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
-          </div>
       </div>
     </div>
   </body>
