@@ -184,7 +184,7 @@ Return value indicates the group remain with the favorite_stock.
 
 ### HTTP Requst
 
-`DELETE api/v1/favorite_stock/ungroup`
+`DELETE api/v1/favorite_stocks/ungroup`
 
 ### Query Parameters
 
@@ -201,9 +201,10 @@ stock_group_id | true | integer | グループ ID
 > Return value
 
 ```json
-  { 
-    "stock_group_id": 1001
-  }
+    "stock_groups": [
+      { "name": "match_group1", "id": 1, "favorite_stocks_count": 1 },
+      { "name": "match_group2", "id": 2, "favorite_stocks_count": 2 }
+    ]
 ```
 
 Add stock group.
@@ -211,7 +212,7 @@ Add stock group.
 
 ### HTTP Request
 
-`POST api/v1/stock_group/create`
+`POST api/v1/stock_group/`
 
 ### Query Parameters
 
@@ -254,10 +255,10 @@ Delete a StockGroup that belongs to current user.
 > Return value:
 
 ```json
-  "stock_groups": [
-    { "id": 1, "name": "left_group_1" }, 
-    { "id": 2, "name": "left_group_2" }
-  ]
+    "stock_groups": [
+      { "name": "left_group1", "id": 1, "favorite_stocks_count": 1 },
+      { "name": "left_group2", "id": 2, "favorite_stocks_count": 2 }
+    ]
 ```
 
 ### HTTP Request
