@@ -27,7 +27,7 @@ The API Document for Kabutan OBOE
       "price_at_registration": 10.0,
       "name": "Nintendo",
       "prev_close_price": 20.0,
-      "note": "first stock",
+      "memo": "first stock",
       "stock_groups": [
         { "name": "group1",
           "id":   1001 },
@@ -44,7 +44,7 @@ The API Document for Kabutan OBOE
       "price_at_registration": 10.0,
       "name": "Shisedo",
       "prev_close_price": 20.0,
-      "note": "second stock",
+      "memo": "second stock",
       "stock_groups": [
         { "name": "group3"
           "id":   1003 },
@@ -80,7 +80,7 @@ None
     "price_at_registration": 10.0,
     "prev_close_price": 20.0,
     "prev_close_price_updated_on": "2017-12-08",
-    "note": "note",
+    "memo": "note",
     "stock_group": [
       { "id": 1001, "name": "Gaming" },
       { "id": 1002, "name": "Manufacturer" }
@@ -102,7 +102,7 @@ Parameter | Reqiured | Datatype | Description
 stock_code | true | string | 銘柄コード
 registered_on | true | date | 登録日
 price_at_registration | true | float | 登録時株価
-note | false | string | メモ
+memo | false | string | メモ
 stock_group_ids | false | array_of_integer | 銘柄グループ
 
 ## Edit FavoriteStock Order
@@ -119,7 +119,7 @@ stock_group_ids | false | array_of_integer | 銘柄グループ
       "price_at_registration": 10.0,
       "name": "Nintendo",
       "prev_close_price": 20.0,
-      "note": "first stock",
+      "memo": "first stock",
       "stock_groups": [
         { "name": "group1",
           "id":   1001 },
@@ -137,7 +137,7 @@ stock_group_ids | false | array_of_integer | 銘柄グループ
       "price_at_registration": 10.0,
       "name": "Shisedo",
       "prev_close_price": 20.0,
-      "note": "second stock",
+      "memo": "second stock",
       "stock_groups": [
         { "name": "group3"
           "id":   1003 },
@@ -207,7 +207,7 @@ stock_group_id | true | integer | グループ ID
     ]
 ```
 
-Add stock group.
+Add stock group. Return the stock_groups belong to current_user.
 <aside class="notice">Require user login.</aside>
 
 ### HTTP Request
@@ -218,8 +218,9 @@ Add stock group.
 
 Parameter | Reqiured | Datatype | Description
 --------- | -------- | -------- | -----------
-favorite_stock_id | true | integer | お気に入り銘柄 ID 
+favorite_stock_id | false | integer | お気に入り銘柄 ID 
 name | true | string | グループ名前
+memo | false | string | メモ
 
 ## Search StockGroup
 
