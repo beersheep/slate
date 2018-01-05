@@ -272,3 +272,34 @@ Parameter | Reqiured | Datatype | Description
 --------- | -------- | -------- | -----------
 id | true | integer | 銘柄グループ ID
 
+## Edit StockGroup
+
+Edit a StockGroup's name or memo that belongs to current user.
+<aside class="notice">Require user login.</aside>
+
+> Return value:
+
+```
+* return the updated stock_group attributes
+```
+
+```json
+  {
+    "id": 1,
+    "name": "ECO",
+    "memo": "ECO navi"
+  }
+```
+
+### HTTP Request
+
+`PATCH api/v1/stock_groups/:id`
+
+### Query Parameters
+
+Parameter | Reqiured | Datatype | Description
+--------- | -------- | -------- | -----------
+id | true | integer | 銘柄グループ ID
+name | false | string | グループ名称
+memo | false | string | メモ
+
