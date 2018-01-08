@@ -201,10 +201,9 @@ stock_group_id | true | integer | グループ ID
 > Return value
 
 ```json
-    "stock_groups": [
-      { "name": "match_group1", "id": 1, "favorite_stocks_count": 1 },
-      { "name": "match_group2", "id": 2, "favorite_stocks_count": 2 }
-    ]
+    {
+      "name": "match_group1", "id": 1, "favorite_stocks_count": 1
+    }
 ```
 
 Add stock group. Return the stock_groups belong to current_user.
